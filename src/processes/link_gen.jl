@@ -1,10 +1,4 @@
-basis1 = SpinBasis(1//2)
-ϕ⁺ = Ket(basis1 ⊗ basis1, [1.0+0.0im, 0.0+0.0im, 0.0+0.0im, 1.0+0.0im] / sqrt(2))
-function werner_state(p::Float64)
-    @assert 0 <= p <= 1 "p must be between 0 and 1."
-    return p * dm(ϕ⁺) + 0.25(1 - p) * express(I ⊗ I)
-end
-
+include("../states/werner.jl")
 
 function link_gen(network::Network, link_id::Int) 
     time_taken = network.param.link_generation_delay
