@@ -1,0 +1,3 @@
+[deps]
+CentralQNet = "6d39a69c-68c7-4b73-ba93-5aaed81b2158"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"

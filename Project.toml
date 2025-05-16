@@ -1,3 +1,8 @@
+name = "CentralQNet"
+uuid = "6d39a69c-68c7-4b73-ba93-5aaed81b2158"
+authors = ["Sagnik Pal <sagnikpal@umass.edu>"]
+version = "0.2.0"
+
 [deps]
 QuantumOptics = "6e0679c1-51ea-5a7c-ac74-d61b76210b0c"
 QuantumSavory = "2de2e421-972c-4cb5-a0c3-999c85908079"

@@ -5,10 +5,10 @@ function bsm(network::Network, link_id::Int)
     measa = project_traceout!(network.factory_node.link_qubits[link_id], σᶻ)
     measb = project_traceout!(network.factory_node.memory_qubits[link_id], σᶻ)
 
-    if measa == 1
+    if measa == 2
         apply!(network.end_nodes[link_id].qubit[1], X)
     end
-    if measb == 1
+    if measb == 2
         apply!(network.end_nodes[link_id].qubit[1], Z)
     end
 end
