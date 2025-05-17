@@ -1,18 +1,21 @@
 using CentralQNet
 
+
+const T2 = 1.0 #sec
+const num_end_nodes = 5
 const L = 50 #km
-const c = 2e5 #km/s
+const werner_prob = 0.9 
 
 param = NetworkParam(
-    T2 = 1.0,
-    num_end_nodes = 3,
+    T2 = T2,
+    num_end_nodes = num_end_nodes,
 
-    entanglement_prob = 0.9,
-    werner_prob = 0.9,
-    link_generation_delay = L / c
+    entanglement_prob = exp(-L/44)^2 / 2,
+    werner_prob = werner_prob,
+    link_delay = L / 2e5
 )
 
-run_count = 10^6
+const run_count = 10^6
 
 success_count = 0
 times = Float64[]

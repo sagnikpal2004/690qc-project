@@ -26,7 +26,7 @@ struct NetworkParam
 
     entanglement_prob::Float64
     werner_prob::Float64
-    link_generation_delay::Float64
+    link_delay::Float64
 
     function NetworkParam(;
         T2::Float64 = 0.0,
@@ -34,16 +34,16 @@ struct NetworkParam
 
         entanglement_prob::Float64 = 1.0,
         werner_prob::Float64 = 0.0,
-        link_generation_delay::Float64 = 0.0
+        link_delay::Float64 = 0.0
     )
         @assert 0 <= T2                     "T2 must be non-negative."
         @assert 0 <  num_end_nodes          "Number of end nodes must be positive."
     
         @assert 0 <= entanglement_prob <= 1 "Entanglement probability must be between 0 and 1."
         @assert 0 <= werner_prob <= 1       "Werner probability must be between 0 and 1."
-        @assert 0 <= link_generation_delay  "Link generation delay must be non-negative."
+        @assert 0 <= link_delay  "Link generation delay must be non-negative."
         
-        return new(T2, num_end_nodes, entanglement_prob, werner_prob, link_generation_delay)
+        return new(T2, num_end_nodes, entanglement_prob, werner_prob, link_delay)
     end
 end
 
@@ -87,7 +87,7 @@ function run_sim(network::Network)
     for i in 1:network.param.num_end_nodes
         bsm(network, i)
     end
-    total_time += link_time
+    total_time += network.param.link_delay
 
     uptotime!(network, total_time)
 
@@ -95,5 +95,9 @@ function run_sim(network::Network)
 
     return total_time, fidelity
 end
+
+export run_sim
+export NetworkParam
+export Network
 
 end # module

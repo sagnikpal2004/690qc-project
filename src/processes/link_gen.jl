@@ -1,7 +1,7 @@
 include("../states/werner.jl")
 
 function link_gen(network::Network, link_id::Int) 
-    time_taken = network.param.link_generation_delay
+    time_taken = 2 * network.param.link_delay
 
     while true
         if rand() < network.param.entanglement_prob
@@ -11,6 +11,6 @@ function link_gen(network::Network, link_id::Int)
             ], werner_state(network.param.werner_prob))
             return time_taken
         end
-        time_taken += network.param.link_generation_delay
+        time_taken += 2 * network.param.link_delay
     end
 end
